@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace estore.web.Filters
 {
+    /// <summary>
+    /// Defines a filter to validate input model
+    /// </summary>
     public class ValidateModelAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)

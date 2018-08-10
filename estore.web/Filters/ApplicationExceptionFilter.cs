@@ -9,7 +9,7 @@ namespace estore.web.Filters
     /// <summary>
     /// Defines an exception filter
     /// </summary>
-    public class ApplicationExceptionFilter : ExceptionFilterAttribute
+    public class ApplicationExceptionFilterAttribute : ExceptionFilterAttribute
     {
         public override void OnException(ExceptionContext context)
         {

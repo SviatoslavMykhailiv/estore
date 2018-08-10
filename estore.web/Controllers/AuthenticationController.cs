@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace estore.web.Controllers
 {
     [Produces("application/json")]
-    [Route("api/auth")]
+    [Route("[controller]/[action]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AuthenticationController : Controller
     {
@@ -31,10 +31,15 @@ namespace estore.web.Controllers
             this.signInManager = signInManager;
         }
 
+        /// <summary>
+        /// Exposes auth/login HTTP method
+        /// </summary>
+        /// <param name="loginModel">Data needed for login</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateModel]
         [AllowAnonymous]
-        public async Task<IActionResult> Post([FromBody]LoginModel loginModel)
+        public async Task<IActionResult> Login([FromBody]LoginModel loginModel)
         {
             var user = await userManager.FindByNameAsync(loginModel.UserName);
 
@@ -70,10 +75,22 @@ namespace estore.web.Controllers
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.WriteToken(jwt);
-
-            var response = new LoginResponseModel(token);
+            
+            var response = new LoginResponseModel(token, user.Id);
 
             return Ok(response);
+        }
+
+        /// <summary>
+        /// Exposes auth/logout HTTP method
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return NoContent();
         }
     }
 }

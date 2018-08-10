@@ -1,4 +1,5 @@
-﻿using estore.web.Authentication;
+﻿using estore.data.Context;
+using estore.web.Authentication;
 using estore.web.Authentication.Models;
 using estore.web.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -31,6 +32,9 @@ namespace estore.web
 
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<UserIdentityDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("estoreConnectionString")));
+
+            services.AddEntityFrameworkSqlServer()
+                .AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("estoreConnectionString")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<UserIdentityDbContext>()

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estore.web", "estore.web\estore.web.csproj", "{5BA9540E-8081-4BC9-98D0-7DB182CAE7D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estore.web", "estore.web\estore.web.csproj", "{5BA9540E-8081-4BC9-98D0-7DB182CAE7D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estore.domain", "estore.domain\estore.domain.csproj", "{0DFAD7DA-E174-4511-A66D-92B1E46FD103}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estore.domain", "estore.domain\estore.domain.csproj", "{0DFAD7DA-E174-4511-A66D-92B1E46FD103}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estore.data", "estore.data\estore.data.csproj", "{D4ADD680-3842-4B41-8F98-8478299EBE65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0DFAD7DA-E174-4511-A66D-92B1E46FD103}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DFAD7DA-E174-4511-A66D-92B1E46FD103}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DFAD7DA-E174-4511-A66D-92B1E46FD103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4ADD680-3842-4B41-8F98-8478299EBE65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4ADD680-3842-4B41-8F98-8478299EBE65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4ADD680-3842-4B41-8F98-8478299EBE65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4ADD680-3842-4B41-8F98-8478299EBE65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

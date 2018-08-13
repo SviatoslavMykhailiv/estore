@@ -42,7 +42,7 @@ namespace estore.web.Controllers
             var createdUser = await userManager.FindByNameAsync(registrationModel.Email);
             await userManager.AddToRoleAsync(createdUser, UserRoles.User);
 
-            return Created($"profile/{createdUser.Id}", createdUser.Id);
+            return Created($"userprofile", createdUser.Id);
         }
     }
 }

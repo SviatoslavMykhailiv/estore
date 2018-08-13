@@ -1,4 +1,6 @@
 ﻿using estore.data.Context;
+using estore.data.Services;
+using estore.domain.Services;
 using estore.web.Authentication;
 using estore.web.Authentication.Models;
 using estore.web.Filters;
@@ -45,6 +47,8 @@ namespace estore.web
                 options.Password.RequireDigit = true;
                 options.User.RequireUniqueEmail = true;
             });
+
+            services.AddTransient<IUserProfileService, UserProfileService>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {

@@ -1,6 +1,8 @@
-﻿using estore.domain.Enums;
+﻿using estore.domain.Services;
+using estore.web.Authentication.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -11,10 +13,20 @@ namespace estore.web.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class UserProfileController : Controller
     {
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = UserRoles.Admin)]
-        public async Task<IActionResult> Users()
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly IUserProfileService userProfileService;
+
+        public UserProfileController(UserManager<ApplicationUser> userManager, IUserProfileService userProfileService)
         {
-            return Ok();
+            this.userManager = userManager;
+            this.userProfileService = userProfileService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var currentUser = await userManager.FindByNameAsync(User.Identity.Name);
+            return Ok(currentUser);
         }
     }
 }

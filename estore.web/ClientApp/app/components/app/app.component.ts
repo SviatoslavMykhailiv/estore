@@ -6,4 +6,5 @@
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    title : string = "Hello";
 }

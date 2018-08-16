@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 
 namespace estore.web
 {
@@ -93,6 +94,12 @@ namespace estore.web
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+            {
+                HotModuleReplacement = false,
+                ReactHotModuleReplacement = false
+            });
 
             app.UseCors("CorsPolicy");
             app.UseAuthentication();

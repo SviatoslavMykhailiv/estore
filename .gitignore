@@ -269,3 +269,4 @@ __pycache__/
 estore.web/Migrations/
 estore.web/ClientApp/dist/
 estore.web/wwwroot/dist/
+estore.web/package-lock.json

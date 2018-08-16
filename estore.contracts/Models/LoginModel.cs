@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace estore.contracts.Models
+﻿namespace estore.contracts.Models
 {
     /// <summary>
     /// Defines a login data model
@@ -10,12 +8,10 @@ namespace estore.contracts.Models
         /// <summary>
         /// Login, Username
         /// </summary>
-        [Required]
         public string UserName { get; set; }
         /// <summary>
         /// Password
         /// </summary>
-        [Required]
         public string Password { get; set; }
     }
 }

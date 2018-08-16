@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
-  "name": "estore",
-  "private": true,
+    "version": "1.0.0",
+    "name": "estore",
+    "private": true,
     "devDependencies": {
         "@angular/animations": "4.2.5",
         "@angular/common": "4.2.5",

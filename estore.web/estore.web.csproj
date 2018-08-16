@@ -27,6 +27,6 @@
     </ItemGroup>
     
     <ItemGroup>
-      <ProjectReference Include="..\estore.domain\estore.contracts.csproj" />
+      <ProjectReference Include="..\estore.contracts\estore.contracts.csproj" />
     </ItemGroup>
 </Project>

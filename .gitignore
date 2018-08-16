@@ -267,3 +267,5 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/
 estore.web/Migrations/
+estore.web/ClientApp/dist/
+estore.web/wwwroot/dist/

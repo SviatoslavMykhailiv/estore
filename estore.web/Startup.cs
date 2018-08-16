@@ -63,7 +63,7 @@ namespace estore.web
 
             services.AddMvcCore(options =>
             {
-                options.Filters.Add(new ApplicationExceptionFilterAttribute());
+                options.Filters.Add<ApplicationExceptionFilterAttribute>();
             })
                 .AddApiExplorer()
                 .AddFormatterMappings()
@@ -79,7 +79,12 @@ namespace estore.web
                         .AllowCredentials();
                     });
                 })
-                .AddAuthorization();
+                .AddAuthorization()
+                .AddViews()
+                .AddRazorViewEngine()
+                .AddRazorPages();
+
+            services.AddLogging();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -91,7 +96,14 @@ namespace estore.web
 
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
-            app.UseMvc();
+            app.UseStaticFiles();
+            app.UseMvc(routes => {
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}");
+                routes.MapSpaFallbackRoute(
+                                           name: "spa-fallback",
+                                           defaults: new {controller = "Home", action = "Index"});
+            });
+
         }
     }
 }

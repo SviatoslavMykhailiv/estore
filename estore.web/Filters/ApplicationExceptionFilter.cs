@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Runtime.CompilerServices;
 using estore.contracts.Exceptions;
+using Microsoft.Extensions.Logging;
 
 namespace estore.web.Filters
 {
@@ -11,6 +12,13 @@ namespace estore.web.Filters
     /// </summary>
     public class ApplicationExceptionFilterAttribute : ExceptionFilterAttribute
     {
+        private readonly ILogger<ApplicationExceptionFilterAttribute> logger;
+
+        public ApplicationExceptionFilterAttribute(ILogger<ApplicationExceptionFilterAttribute> logger)
+        {
+            this.logger = logger;
+        }
+
         public override void OnException(ExceptionContext context)
         {
             var currentException = context.Exception;
@@ -18,14 +26,16 @@ namespace estore.web.Filters
             if (IsBadRequestException(currentException))
             {
                 context.Result = new BadRequestObjectResult(new[] { currentException.Message });
-                return;
+                context.ExceptionHandled = true;
             }
 
             if (IsNotFoundException(currentException))
             {
                 context.Result = new NotFoundObjectResult(new[] { currentException.Message });
-                return;
+                context.ExceptionHandled = true;
             }
+
+            logger.LogError(context.Exception, context.Exception.Message);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

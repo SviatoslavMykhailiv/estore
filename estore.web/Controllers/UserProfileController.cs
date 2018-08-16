@@ -1,10 +1,10 @@
-﻿using estore.domain.Services;
-using estore.web.Authentication.Models;
+﻿using estore.web.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using estore.contracts.Services;
 
 namespace estore.web.Controllers
 {

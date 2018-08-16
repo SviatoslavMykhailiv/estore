@@ -1,13 +1,13 @@
-﻿using estore.domain.Enums;
-using estore.domain.Exceptions;
-using estore.domain.Models;
-using estore.web.Authentication.Models;
+﻿using estore.web.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using estore.contracts.Enums;
+using estore.contracts.Exceptions;
+using estore.contracts.Models;
 
 namespace estore.web.Controllers
 {
@@ -40,9 +40,9 @@ namespace estore.web.Controllers
                 throw new BadRequestException(userRegistrationResult.Errors.Select(c => c.Description).First());
 
             var createdUser = await userManager.FindByNameAsync(registrationModel.Email);
-            await userManager.AddToRoleAsync(createdUser, UserRoles.User);
+            await userManager.AddToRoleAsync(createdUser, UserRoles.USER);
 
-            return Created($"userprofile", createdUser.Id);
+            return Created("userprofile", createdUser.Id);
         }
     }
 }

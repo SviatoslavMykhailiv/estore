@@ -21,13 +21,12 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
     </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\estore.data\estore.data.csproj" />
-        <ProjectReference Include="..\estore.domain\estore.domain.csproj" />
-    </ItemGroup>
     
     <ItemGroup>
         <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\estore.domain\estore.contracts.csproj" />
     </ItemGroup>
 </Project>

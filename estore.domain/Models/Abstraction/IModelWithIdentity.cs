@@ -1,7 +1,7 @@
-﻿namespace estore.domain.Models.Abstraction
+﻿namespace estore.contracts.Models.Abstraction
 {
     public interface IModelWithIdentifier
     {
-        long Id { get; set; }
+        long Id { get; }
     }
 }

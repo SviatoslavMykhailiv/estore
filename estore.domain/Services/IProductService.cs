@@ -1,10 +1,10 @@
-﻿using estore.domain.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using estore.contracts.Models;
 
-namespace estore.domain.Services
+namespace estore.contracts.Services
 {
     public interface IProductService
     {
-        Task<Product> GetProductByIdAsync(long id);
+        Task<ProductModel> GetProductByIdAsync(long id);
     }
 }

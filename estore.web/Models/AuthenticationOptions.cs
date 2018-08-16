@@ -1,15 +1,16 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Text;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace estore.web.Authentication.Models
+namespace estore.web.Models
 {
     public class AuthenticationOptions
     {
-        private const string SectionKey = "AuthOptions";
+        private const string SECTION_KEY = "AuthOptions";
 
         public AuthenticationOptions(IConfiguration configuration)
         {
-            var section = configuration.GetSection(SectionKey);
+            var section = configuration.GetSection(SECTION_KEY);
 
             Issuer = section["issuer"];
             Audience = section["audience"];
@@ -22,6 +23,6 @@ namespace estore.web.Authentication.Models
         private string Secret { get; }
         public int LifeTime { get; }
 
-        public SymmetricSecurityKey SecurityKey => JwtSecurityKey.Create(Secret);
+        public SymmetricSecurityKey SecurityKey => new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Secret));
     }
 }

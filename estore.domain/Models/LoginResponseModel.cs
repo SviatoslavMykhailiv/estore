@@ -1,4 +1,4 @@
-﻿namespace estore.domain.Models
+﻿namespace estore.contracts.Models
 {
     /// <summary>
     /// Defines a model that comes as response while success login

@@ -1,4 +1,4 @@
-﻿namespace estore.domain.Services
+﻿namespace estore.contracts.Services
 {
     public interface IUserProfileService
     {

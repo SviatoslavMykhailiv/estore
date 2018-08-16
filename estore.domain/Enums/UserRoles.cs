@@ -1,9 +1,9 @@
-﻿namespace estore.domain.Enums
+﻿namespace estore.contracts.Enums
 {
     public static class UserRoles
     {
-        public const string User = "User";
-        public const string Admin = "Admin";
-        public const string Root = "Root";
+        public const string USER = "User";
+        public const string ADMIN = "Admin";
+        public const string ROOT = "Root";
     }
 }

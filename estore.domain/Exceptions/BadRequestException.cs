@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace estore.domain.Exceptions
+namespace estore.contracts.Exceptions
 {
     /// <summary>
     /// Defines an exception that should be thrown due to invalid user's input

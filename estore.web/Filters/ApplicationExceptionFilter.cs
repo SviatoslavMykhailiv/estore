@@ -1,8 +1,8 @@
-﻿using estore.domain.Exceptions;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Runtime.CompilerServices;
+using estore.contracts.Exceptions;
 
 namespace estore.web.Filters
 {
@@ -29,13 +29,13 @@ namespace estore.web.Filters
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private bool IsBadRequestException(Exception exception)
+        private static bool IsBadRequestException(Exception exception)
         {
             return exception is BadRequestException;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private bool IsNotFoundException(Exception exception)
+        private static bool IsNotFoundException(Exception exception)
         {
             return exception is ItemNotFoundException;
         }

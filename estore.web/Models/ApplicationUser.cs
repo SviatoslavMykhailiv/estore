@@ -1,7 +1,7 @@
-﻿using estore.domain.Models;
+﻿using estore.contracts.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace estore.web.Authentication.Models
+namespace estore.web.Models
 {
     public class ApplicationUser : IdentityUser
     {
@@ -18,5 +18,7 @@ namespace estore.web.Authentication.Models
         }
 
         public string Name { get; }
+        public sealed override string Email { get; set; }
+        public sealed override string UserName { get; set; }
     }
 }

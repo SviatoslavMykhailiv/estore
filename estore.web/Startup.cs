@@ -1,9 +1,8 @@
-﻿using estore.data.Context;
-using estore.data.Services;
-using estore.domain.Services;
-using estore.web.Authentication;
-using estore.web.Authentication.Models;
+﻿using estore.contracts.Services;
+using estore.web.Models;
+using estore.web.Data;
 using estore.web.Filters;
+using estore.web.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,13 +32,10 @@ namespace estore.web
             services.AddSingleton(authenticationOptions);
 
             services.AddEntityFrameworkSqlServer()
-                .AddDbContext<UserIdentityDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("estoreConnectionString")));
-
-            services.AddEntityFrameworkSqlServer()
                 .AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("estoreConnectionString")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<UserIdentityDbContext>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options => 

@@ -1,6 +1,4 @@
-﻿using estore.domain.Exceptions;
-using estore.domain.Models;
-using estore.web.Authentication.Models;
+﻿using estore.web.Models;
 using estore.web.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -10,8 +8,11 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using estore.contracts.Exceptions;
+using estore.contracts.Models;
 
 namespace estore.web.Controllers
 {
@@ -57,9 +58,7 @@ namespace estore.web.Controllers
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.UserName)
             };
-
-            foreach (var role in roles)
-                claims.Add(new Claim(ClaimsIdentity.DefaultRoleClaimType, role));
+            claims.AddRange(roles.Select(role => new Claim(ClaimsIdentity.DefaultRoleClaimType, role)));
 
             var claimsIdentity = new ClaimsIdentity(claims);
 
@@ -86,7 +85,6 @@ namespace estore.web.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();

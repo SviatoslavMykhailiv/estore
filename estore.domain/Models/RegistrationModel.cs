@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace estore.domain.Models
+namespace estore.contracts.Models
 {
     /// <summary>
     /// Defines model used while registration

@@ -172,3 +172,43 @@ GO
 
 ALTER TABLE [dbo].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]
 GO
+
+
+PRINT 'Adding user roles'
+
+DECLARE @rootRoleId NVARCHAR(450) = NEWID()
+
+INSERT INTO [dbo].[AspNetRoles] (Id, Name, NormalizedName, ConcurrencyStamp)
+VALUES
+(@rootRoleId, 'ROOT', 'ROOT', NULL),
+(NEWID(), 'ADMIN', 'ADMIN', NULL),
+(NEWID(), 'USER', 'USER', NULL)
+
+DECLARE @rootId NVARCHAR(450) = NEWID()
+
+INSERT INTO [dbo].[AspNetUsers] (
+Id, 
+Email,
+UserName,
+NormalizedUserName, 
+PasswordHash, 
+AccessFailedCount, 
+EmailConfirmed, 
+PhoneNumberConfirmed, 
+TwoFactorEnabled, 
+LockoutEnabled)
+VALUES (
+@rootId, 
+'root@root.com', 
+'root@root.com', 
+'ROOT@ROOT.COM',
+'AQAAAAEAACcQAAAAEFNJ8uJn/GjhqeoWFTGhpmBq9EYA4OzwwQ2WIDRjMvj87JigY7i7sELmypMadtlkwA==', 
+0, 
+1, 
+0, 
+0, 
+0)
+
+
+INSERT INTO [dbo].[AspNetUserRoles] (UserId, RoleId)
+VALUES (@rootId, @rootRoleId)

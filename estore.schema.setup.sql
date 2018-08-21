@@ -186,6 +186,8 @@ VALUES
 
 DECLARE @rootId NVARCHAR(450) = NEWID()
 
+PRINT 'Creating user username - root@root.com, password - Root!23456'
+
 INSERT INTO [dbo].[AspNetUsers] (
 Id, 
 Email,

@@ -41,13 +41,13 @@ namespace estore.web.Filters
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static bool IsBadRequestException(Exception exception)
         {
-            return exception is BadRequestException;
+            return exception is RequestException;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static bool IsNotFoundException(Exception exception)
         {
-            return exception is ItemNotFoundException;
+            return exception is ResourceException;
         }
     }
 }

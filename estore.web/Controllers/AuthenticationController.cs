@@ -45,12 +45,12 @@ namespace estore.web.Controllers
             var user = await userManager.FindByNameAsync(loginModel.UserName);
 
             if (user == null)
-                throw new BadRequestException("User not found.");
+                throw new RequestException("User not found.");
 
             var signIn = await signInManager.PasswordSignInAsync(user, loginModel.Password, true, true);
 
             if (signIn.Succeeded == false)
-                throw new BadRequestException("Could not sign in.");
+                throw new RequestException("Could not sign in.");
 
             var roles = await userManager.GetRolesAsync(user);
 

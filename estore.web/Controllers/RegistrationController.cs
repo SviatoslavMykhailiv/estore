@@ -37,7 +37,7 @@ namespace estore.web.Controllers
             var userRegistrationResult = await userManager.CreateAsync(user, registrationModel.Password);
 
             if (userRegistrationResult.Succeeded == false)
-                throw new BadRequestException(userRegistrationResult.Errors.Select(c => c.Description).First());
+                throw new RequestException(userRegistrationResult.Errors.Select(c => c.Description).First());
 
             var createdUser = await userManager.FindByNameAsync(registrationModel.Email);
             await userManager.AddToRoleAsync(createdUser, UserRoles.USER);

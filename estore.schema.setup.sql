@@ -196,7 +196,9 @@ AccessFailedCount,
 EmailConfirmed, 
 PhoneNumberConfirmed, 
 TwoFactorEnabled, 
-LockoutEnabled)
+LockoutEnabled,
+SecurityStamp,
+ConcurrencyStamp)
 VALUES (
 @rootId, 
 'root@root.com', 
@@ -207,7 +209,9 @@ VALUES (
 1, 
 0, 
 0, 
-0)
+0,
+NEWID(),
+NEWID())
 
 
 INSERT INTO [dbo].[AspNetUserRoles] (UserId, RoleId)
